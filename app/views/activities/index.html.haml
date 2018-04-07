@@ -28,6 +28,6 @@
   %span
   = t("activities.new.label")
 
-%ul#activities
+%section
   - @activities_per_day.each do |day, activities|
     = render 'activity_day', day: day, activities: activities

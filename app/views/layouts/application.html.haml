@@ -7,9 +7,14 @@
   %body(class="#{ body_class(controller.action_name) }")
     = render "partials/chrome_frame"
     = render "partials/notifications"
-    #container
-      = render "partials/header"
-      #main(role="main")
-        = yield
-      = render "partials/footer"
+    = render "partials/header"
+    #main(role="main")
+      %article.page-section.page-section--sub-page
+        .page-section__wrapper
+          .page-section__image
+            = image_tag "activities/activities.svg", class: "page-section__image--vertical"
+            -#= image_tag "activities/activities_mobile.svg", class: "page-section__image--horizontal"
+          .page-section__inner
+            = yield
+    = render "partials/footer"
     = javascript_include_tag "application"
