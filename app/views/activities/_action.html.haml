@@ -11,7 +11,11 @@
         %span
         = t("activities.leave.label")
   - else
-    - unless activity.full? || activity.in_past? || activity.official
+    - if activity.official
+      = link_to activity_path(activity), title: t("activities.official.title") do
+        %span
+        = t("activities.official.label")
+    - elsif !activity.full? && !activity.in_past?
       = button_to activity_participation_path(activity), method: :post, remote: remote, title: t("activities.join.title") do
         %span
         = t("activities.join.label")
