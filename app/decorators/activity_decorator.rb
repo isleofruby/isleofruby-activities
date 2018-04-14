@@ -2,7 +2,11 @@ class ActivityDecorator < Draper::Decorator
   delegate_all
 
   def css_classes
-    classes =  [relation_ship_with(h.current_user)]
+    classes = [
+      relation_ship_with(h.current_user) ||
+        object.official? ? 'official' : default
+    ]
+    # classes << 'official' if object.official?
     classes << "today" if object.today?
     classes << "past" if object.in_past?
     classes << "full" if object.full?
@@ -19,10 +23,10 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def relation_ship_with(user)
-    if user.nil?                            then "default"
+    if user.nil?
     elsif object.creator == user            then "owner"
     elsif object.participants.include? user then "participant"
-    else                                         "default"
+    else
     end
   end
 

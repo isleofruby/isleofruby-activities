@@ -69,6 +69,9 @@ en:
     leave:
       label: Cancel
       title: Cancel your participation
+    official:
+      label: Official
+      title: Part of Isle of Ruby official programme
     more_info:
       label: More info
       label_long: View activity details

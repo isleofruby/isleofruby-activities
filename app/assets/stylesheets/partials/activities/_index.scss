@@ -73,6 +73,17 @@ a#new-activity {
       }
     }
 
+    &.official {
+      span.icon {
+        background: image-url('shared/IoR_illustration.svg');
+        background-repeat: no-repeat;
+        /*background-position: 0 10px;*/
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+      }
+    }
+
     // links are actually stacked in this case
     // as one card has to support many purposes
     a {
@@ -200,6 +211,18 @@ a#new-activity {
             @extend %large-icon-button-#{nth($type, 3)};
           }
         }
+      }
+    }
+
+    &.official {
+      .action {
+        background: image-url('shared/IoR_illustration.svg');
+        background-repeat: no-repeat;
+        background-position: 0 20px;
+        display: block;
+        height: 96px;
+        margin: 0 auto 0.75em;
+        width: 96px;
       }
     }
 
