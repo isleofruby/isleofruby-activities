@@ -4,15 +4,16 @@
       Reset your password
 
   %section.form
-    = form_for resource, as: resource_name, url: password_path(resource_name), method: :post do |f|
+    = form_with model: resource, scope: resource_name,
+        url: password_path(resource_name),
+        method: :post do |f|
       -# %p Send me reset password instructions to this email address:
 
       %label.email
         %span.label Email address
         = f.email_field :email, placeholder: 'You email address'
 
-      %button{ type: 'submit' }>
-        Send me instructions
+      = f.button 'Send me instructions'
 
       %p.info
         = succeed '.' do

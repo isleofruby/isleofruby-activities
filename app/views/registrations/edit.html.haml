@@ -4,7 +4,8 @@
       Edit profile
 
   %section.form
-    = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+    = form_with model: resource, scope: resource_name,
+        url: registration_path(resource_name) do |f|
 
       %figure.avatar
         = image_tag(avatar_url(@user, 128))
@@ -30,8 +31,7 @@
           %span.label Your password once more
           = f.password_field :password_confirmation, placeholder: 'Your password once more'
 
-      %button{ type: 'submit' }>
-        Update
+      = f.button 'Update'
 
       %p.divider
         %span Connect!

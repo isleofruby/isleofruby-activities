@@ -1,4 +1,4 @@
-= form_for activity, html: { id: 'new-activity' } do |f|
+= form_with model: activity, id: 'new-activity' do |f|
 
   %label.name
     = f.text_field :name, placeholder: t('activity_form.name.label'), class: 'title'
@@ -13,7 +13,7 @@
     %span.between
       = t('common.or').downcase
     %label.inline
-      = f.check_box :anytime
+      = f.check_box :anytime, id: 'activity_anytime'
       = t('activity_form.anytime.hint')
 
   %hr
@@ -47,11 +47,13 @@
       = t('activity_form.description.hint')
 
   %label.image-url
-    = f.url_field :image_url, placeholder: t('activity_form.image_url.label')
+    = f.url_field :image_url,
+        id: 'activity_image_url',
+        placeholder: t('activity_form.image_url.label')
     .preview
     %small
       = t('activity_form.image_url.hint')
 
-  %button{ type: 'submit' }>
+  = f.button do
     %span>
     = t("common.submit.#{activity.new_record? ? 'new' : 'edit'}")
