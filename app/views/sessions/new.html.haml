@@ -9,7 +9,10 @@
 
       %label.email
         %span.label Your email address
-        = f.email_field :email, autofocus: true, placeholder: 'Your email address'
+        = f.email_field :email,
+            autofocus: true,
+            autocomplete: 'email',
+            placeholder: 'Your email address'
 
       %label.password
         %span.label Your password

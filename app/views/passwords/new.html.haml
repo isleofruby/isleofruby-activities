@@ -10,8 +10,10 @@
       -# %p Send me reset password instructions to this email address:
 
       %label.email
-        %span.label Email address
-        = f.email_field :email, placeholder: 'You email address'
+        %span.label Your email address
+        = f.email_field :email,
+            autocomplete: 'email',
+            placeholder: 'Your email address'
 
       = f.button 'Send me instructions'
 

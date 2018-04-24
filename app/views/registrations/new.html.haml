@@ -17,20 +17,29 @@
 
       %label.name
         %span.label Name
-        = f.text_field :name, autofocus: true, placeholder: 'Name'
+        = f.text_field :name,
+            autofocus: true,
+            autocomplete: 'name',
+            placeholder: 'Name'
 
       %label.email
         %span.label Email address
-        = f.email_field :email, placeholder: 'Email address'
+        = f.email_field :email,
+            autocomplete: 'email',
+            placeholder: 'Email address'
 
       - if @user.password_required?
         %label.password
           %span.label Password
-          = f.password_field :password, placeholder: 'Password'
+          = f.password_field :password,
+              autocomplete: 'new-password',
+              placeholder: 'Password'
 
         %label.password
           %span.label Password, once more
-          = f.password_field :password_confirmation, placeholder: 'Password once more'
+          = f.password_field :password_confirmation,
+              autocomplete: 'new-password',
+              placeholder: 'Password once more'
 
       = f.button 'Sign up'
 

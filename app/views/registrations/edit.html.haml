@@ -16,7 +16,9 @@
 
       %label.email
         %span.label Your email address
-        = f.email_field :email, placeholder: 'Your email address'
+        = f.email_field :email,
+            autocomplete: 'email',
+            placeholder: 'Your email address'
 
       %label.inline.show_participation
         = f.check_box :show_participation
@@ -25,11 +27,15 @@
       - if resource.no_oauth_connected?
         %label.password
           %span.label Your password
-          = f.password_field :password, placeholder: 'Your password'
+          = f.password_field :password,
+              autocomplete: 'new-password',
+              placeholder: 'Your password'
 
         %label.password
           %span.label Your password once more
-          = f.password_field :password_confirmation, placeholder: 'Your password once more'
+          = f.password_field :password_confirmation,
+              autocomplete: 'new-password',
+              placeholder: 'Your password once more'
 
       = f.button 'Update'
 
