@@ -10,7 +10,7 @@ gem 'dotenv-rails'
 gem 'settingslogic'
 
 gem 'devise',             '~> 4.4.3'
-gem 'omniauth',           '~> 1.6.1'
+gem 'omniauth',           '~> 1.9.2'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 
