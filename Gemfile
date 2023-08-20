@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.8.1'
+gem 'rails', '6.1.7.4'
 
 gem 'pg'
 
@@ -9,24 +9,25 @@ gem 'puma', '~> 5.6.7'
 gem 'dotenv-rails'
 gem 'settingslogic'
 
-gem 'devise',             '~> 4.4.3'
+gem 'devise',             '~> 4.9.2'
 gem 'omniauth',           '~> 1.6.1'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 
 gem 'autoprefixer-rails', '~> 8.2'
-gem 'bourbon',            '~> 5.0.0'
+gem 'bourbon',            '~> 7.3.0'
 gem 'coffee-rails',       '~> 4.2.1'
-gem 'draper',             '~> 3.0.0.pre1'
-gem 'haml-rails',         '~> 1.0.0'
+gem 'draper'#,             '~> 3.0.0.pre1'
+gem 'haml-rails',         '~> 2.1.0'
+gem 'haml',               '~> 5.2.2'
 gem 'jbuilder',           '~> 2.5'
 gem 'jquery-rails'
 gem 'modernizr-rails'
-gem 'neat', '~> 2.1.0'
+# gem 'neat', git: 'https://github.com/myabc/neat'
 gem 'pundit'
 gem 'rails_html_helpers'
 gem 'redcarpet'
-gem 'responders',         '~> 2.4.0'
+gem 'responders'#,         '~> 2.4.0'
 gem 'sass-rails',         '~> 5.0.6'
 gem 'sprockets-rails',    '~> 3.2.0'
 gem 'turbolinks'
@@ -50,7 +51,7 @@ end
 
 group :test, :development do
   gem 'factory_bot_rails', '~> 4.8'
-  gem 'rspec-rails',       '~> 3.3'
+  gem 'rspec-rails',       '~> 5.1'
 end
 
 group :test do
