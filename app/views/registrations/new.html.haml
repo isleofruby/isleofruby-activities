@@ -11,28 +11,37 @@
       %p.divider
         %span or
 
-    = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+    = form_with model: resource, scope: resource_name,
+        url: registration_path(resource_name) do |f|
       %h4= during_oauth_flow? ? 'One step more - we need your email address' : 'Register a new account'
 
       %label.name
         %span.label Name
-        = f.text_field :name, autofocus: true, placeholder: 'Name'
+        = f.text_field :name,
+            autofocus: true,
+            autocomplete: 'name',
+            placeholder: 'Name'
 
       %label.email
         %span.label Email address
-        = f.email_field :email, placeholder: 'Email address'
+        = f.email_field :email,
+            autocomplete: 'email',
+            placeholder: 'Email address'
 
       - if @user.password_required?
         %label.password
           %span.label Password
-          = f.password_field :password, placeholder: 'Password'
+          = f.password_field :password,
+              autocomplete: 'new-password',
+              placeholder: 'Password'
 
         %label.password
           %span.label Password, once more
-          = f.password_field :password_confirmation, placeholder: 'Password once more'
+          = f.password_field :password_confirmation,
+              autocomplete: 'new-password',
+              placeholder: 'Password once more'
 
-      %button{ type: 'submit' }>
-        Sign up
+      = f.button 'Sign up'
 
       %p.info
         = succeed '.' do

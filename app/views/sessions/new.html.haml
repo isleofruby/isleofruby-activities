@@ -4,18 +4,21 @@
       Sign in
 
   %section.form
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = form_with model: resource, scope: resource_name,
+        url: session_path(resource_name) do |f|
 
       %label.email
         %span.label Your email address
-        = f.email_field :email, autofocus: true, placeholder: 'Your email address'
+        = f.email_field :email,
+            autofocus: true,
+            autocomplete: 'email',
+            placeholder: 'Your email address'
 
       %label.password
         %span.label Your password
         = f.password_field :password, placeholder: 'Your password'
 
-      %button{ type: 'submit' }>
-        Sign in
+      = f.button 'Sign in'
 
     %p.divider
       %span or
