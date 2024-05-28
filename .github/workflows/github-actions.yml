@@ -1,0 +1,59 @@
+name: "Activities CI"
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # Add or replace dependency steps here
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+        with:
+          bundler-cache: true
+      # Add or replace database setup steps here
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      # Add or replace test runners here
+      - name: Run tests
+        run: bin/rake
+#      - name: Install dependencies (Ubuntu)
+#
+#       if: runner.os == 'Linux'
+#        run: |-
+#          sudo apt-get update
+#          sudo apt-get install -y google-chrome-stable
+#      - uses: actions/checkout@v2
+#      - run: sudo gem update --system
+#      - run: sudo gem install bundler
+#      - run: >-
+#          curl -O
+#          https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip
+#      - run: unzip chromedriver_linux64.zip -d chromedriver
+#      - run: 'export PATH=$PATH:`pwd`/chromedriver'
+#      - run: >-
+#          curl -L
+#          https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+#          -o ./cc-test-reporter
+#      - run: chmod +x ./cc-test-reporter
+#      - run: ./cc-test-reporter before-build
+#      - run: cp config/database.yml.sample config/database.yml
+#      - run: 'bundle exec rake db:create db:migrate spec'
+#      - run: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+#
