@@ -4,7 +4,7 @@ gem 'rails', '5.2.8.1'
 
 gem 'pg'
 
-gem 'puma', '~> 5.6.7'
+gem 'puma', '~> 8.0.2'
 
 gem 'dotenv-rails'
 gem 'settingslogic'
